@@ -1,0 +1,27 @@
+{
+  "name": "__MSG_extName__",
+  "version": "0.1",
+  "description": "__MSG_extDesc__",
+  "icons": { "128": "images/news_icon.png" },
+  "default_locale":"en",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_title": "__MSG_ext_default_title__",
+    "default_icon": "images/news_action.png",
+    "default_popup": "views/feed.html"
+  },
+  "permissions": [
+    "tabs",
+    "history",
+    "webNavigation",
+    "http://*/*"
+  ],
+   "content_scripts": [
+      {
+        "matches": ["http://*/*"],
+        "js": ["jquery-1.7.2.min.js","dom.js"]
+      }
+    ]
+}

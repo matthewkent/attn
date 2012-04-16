@@ -1,0 +1,11 @@
+{
+  "extName" : {
+    "message" : "ATTN"
+  },
+  "extDesc" : {
+    "message" : "Automatic subscription based on your attention"
+  },
+  "ext_default_title": {
+    "message": "ATTN"
+  }
+}
