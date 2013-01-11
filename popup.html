@@ -1,25 +1,45 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
   <head>
     <title>ATTN</title>
     <style>
       body {
-        min-width:357px;
-        overflow-x:hidden;
+        font-family: Helvetica, sans-serif;
+        min-width: 250px;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
       }
-
-      img {
-        margin:5px;
-        border:2px solid black;
-        vertical-align:middle;
-        width:75px;
-        height:75px;
+      #links{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      #links a{
+        color: #1E68A6;
+        text-decoration: none;
+        padding: 5px 5px 5px 22px;
+        display: block;
+        outline: none;
+      }
+      #links a:visited{
+        color: #819FC7;
+      }
+      #links li{
+        border-bottom: 1px solid #eee;
+      }
+      #links a:hover{
+        text-decoration: underline;
+      }
+      #links li > img{
+        float: left;
+        margin: 6px 0 0 3px;
       }
     </style>
-    <script src="jquery-1.8.2.min.js"></script>
-    <!-- JavaScript and HTML must be in separate files for security. -->
-    <script src="popup.js"></script>
+    <script src='jquery-1.8.2.min.js'></script>
+    <script src='popup.js'></script>
   </head>
   <body>
+    <ul id="links"></ul>
   </body>
 </html>
