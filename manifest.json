@@ -14,13 +14,15 @@
     "default_title" : "ATTN",
     "default_popup" : "popup.html"
   },
+  "options_page": "options.html",
   "permissions": [
     "tabs",
     "history",
     "webNavigation",
     "http://*/*",
     "unlimitedStorage",
-    "background"
+    "background",
+    "storage"
   ],
    "content_scripts": [
       {

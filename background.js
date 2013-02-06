@@ -3,8 +3,31 @@ var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
 var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
 var IDBCursor = window.IDBCursor || window.webkitIDBCursor;
 
+var optionsRate = 10.0;
+var optionsVisits = 3;
+chrome.storage.sync.get(["options_rate", "options_visits"], function(opt) {
+  if(opt.options_rate !== undefined) {
+    optionsRate = parseFloat(opt.options_rate);
+  }
+  if(opt.options_visits !== undefined) {
+    optionsVisits = parseInt(opt.options_visits);
+  }
+});
+chrome.storage.onChanged.addListener(function(changes, areaName) {
+  if(changes.options_rate !== undefined) {
+    optionsRate = parseFloat(changes.options_rate.newValue);
+  }
+  if(changes.options_visits !== undefined) {
+    optionsVisits = parseInt(changes.options_visits.newValue);
+  }
+});
+
 var db = null;
 var openRequest = indexedDB.open("attn", 1);
+
+openRequest.onerror = function(e) {
+  console.error("error opening attn db: " + e.target.errorCode);
+}
 
 openRequest.onupgradeneeded = function(e) {
 	var thisDb = e.target.result;
@@ -125,13 +148,13 @@ function relevant(feed, cb) {
 			if(itemCount > 0) {
 				var timeSpan = latestDate.getTime() - earliestDate.getTime();
 				rate = itemCount / (timeSpan / (1000.0 * 60.0 * 60.0));
-				if(rate <= 10.0) {
+				if(rate <= optionsRate) {
 					var firstUrl = firstUrl.replace(/^(\w+):\/\//,'');
   				var parts = firstUrl.split("/");
   				var domain = parts[0].replace(/^www\./,'');
 					visitsForDomain(domain, function(visits) {
 						console.log("VISITS "+visits);
-						if(visits >= 3) {
+						if(visits >= optionsVisits) {
 							cb({"url" : feed.toString(), "date" : (new Date((new Date()).getTime()-1000*60*60)), "title" : title, "domain" : domain});
 						} else {
 							cb(null);
