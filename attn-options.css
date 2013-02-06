@@ -1,0 +1,10 @@
+.settings-row {
+  margin: 0.65em 0;
+}
+.thresholds-setting-label > span {
+  min-width: 200px;
+  display: inline-block;
+}
+.thresholds-setting-label > input {
+  text-align: right;
+}

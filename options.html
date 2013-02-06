@@ -1,20 +1,33 @@
 <html>
 <head>
-	<title>ATTN Options</title>
-	<script src='jquery-1.8.2.min.js'></script>
-	<script src="options.js"></script>
+    <title>ATTN Options</title>
+    <link rel="stylesheet" type="text/css" href="chrome-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="attn-options.css">
+    <script src='jquery-1.8.2.min.js'></script>
+    <script src="options.js"></script>
 </head>
-
-<body>
-
-<div id="status"></div>
-
-<p>Feed inclusion thresholds</p>
-<form>
-<label for="options_rate">Maximum feed items per hour</label><input type="text" id="options_rate" name="rate" value=""/>
-<label for="options_visits">Minimum vists per domain</label><input type="text" id="options_visits" name="visits" value=""/>
-<input type="submit" id="save" name="save" value="Save"/>
-</form>
+<body class="frame">
+<div class="view">
+    <div id="status"></div>
+    <header><h1>ATTN Settings</h1></header>
+    <div class="content">
+        <section>
+            <h3>Feed inclusion thresholds</h3>
+            <div class="settings-row">
+                <label for="options_rate" class="thresholds-setting-label">
+                    <span>Maximum feed items per hour:</span>
+                    <input type="text" id="options_rate" name="rate" value=""/>
+                </label>
+            </div>
+            <div class="settings-row">
+                <label for="options_visits" class="thresholds-setting-label">
+                    <span>Minimum vists per domain:</span>
+                    <input type="text" id="options_visits" name="visits" value=""/>
+                </label>
+            </div>
+            <button id="save">Save</button>
+        </section>
+    </div>
+</div>
 </body>
-
 </html>
